@@ -2,8 +2,6 @@ package debugview.client
 
 import debugview.server._
 
-import java.net.Socket
-
 import me.yuhuan.util.net.TcpMessenger
 import poly.util.io.FileIO
 
@@ -15,10 +13,8 @@ import poly.util.io.FileIO
  */
 object RenderService {
 
-
   def renderHtmlContent(className: String, content: String) = {
-    val socket = new Socket("127.0.0.1", 1234)
-    val messenger = TcpMessenger(socket)
+    val messenger = TcpMessenger("127.0.0.1", Ports.RenderServicePort)
     val segmentSize = 1024
     messenger.sendInt(TaskCode.RenderHtml)
     val segments = content.grouped(segmentSize).toSeq
@@ -32,8 +28,7 @@ object RenderService {
   }
 
   def renderSvgContent(className: String, content: String) = {
-    val socket = new Socket("127.0.0.1", 1234)
-    val messenger = TcpMessenger(socket)
+    val messenger = TcpMessenger("127.0.0.1", Ports.RenderServicePort)
     val segmentSize = 1024
     messenger.sendInt(TaskCode.RenderSvg)
     val segments = content.grouped(segmentSize).toSeq
