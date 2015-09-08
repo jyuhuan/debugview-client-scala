@@ -20,7 +20,7 @@ object RenderService {
     val socket = new Socket("127.0.0.1", 1234)
     val messenger = TcpMessenger(socket)
     val segmentSize = 1024
-    messenger.sendInt(TaskCode.RenderHtmlContent)
+    messenger.sendInt(TaskCode.RenderHtml)
     val segments = content.grouped(segmentSize).toSeq
     messenger.sendString(className)
     messenger.sendStrings(segments)
