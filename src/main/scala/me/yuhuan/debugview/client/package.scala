@@ -1,6 +1,5 @@
 package me.yuhuan.debugview
 
-import debugview.server._
 import poly.util.io.FileIO
 
 import scala.sys.process._

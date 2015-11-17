@@ -1,6 +1,5 @@
 package me.yuhuan.debugview.client
 
-import debugview.server._
 import me.yuhuan.debugview.server._
 
 import me.yuhuan.util.net.TcpMessenger
