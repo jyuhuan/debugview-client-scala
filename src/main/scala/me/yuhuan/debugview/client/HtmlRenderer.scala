@@ -1,4 +1,4 @@
-package debugview.client
+package me.yuhuan.debugview.client
 
 import poly.util.typeclass._
 

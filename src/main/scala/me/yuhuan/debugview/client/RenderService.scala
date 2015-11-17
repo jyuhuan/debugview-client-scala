@@ -1,6 +1,7 @@
-package debugview.client
+package me.yuhuan.debugview.client
 
 import debugview.server._
+import me.yuhuan.debugview.server._
 
 import me.yuhuan.util.net.TcpMessenger
 import poly.util.io.FileIO
@@ -39,6 +40,15 @@ object RenderService {
   def renderSvgAtPath(className: String, path: String) = {
     val svgContent = FileIO.readAll(path)
     renderSvgContent(className, svgContent)
+  }
+
+  def renderGraphViz(className: String, content: String) = {
+    val messenger = TcpMessenger("127.0.0.1", Ports.RenderServicePort)
+    val segmentSize = 1024
+    messenger.sendInt(TaskCode.RenderGraphviz)
+    val segments = content.grouped(segmentSize).toSeq
+    messenger.sendString(className)
+    messenger.sendStrings(segments)
   }
 
 }

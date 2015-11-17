@@ -1,4 +1,4 @@
-package debugview
+package me.yuhuan.debugview
 
 import debugview.server._
 import poly.util.io.FileIO
